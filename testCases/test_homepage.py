@@ -10,23 +10,23 @@ class Test_001_HomePage:
     logger = LogGeneration.loggen()
     random_list = []
 
-    # def test_homePageTittle(self, setup):
-    #     self.logger.info("***Test_001_HomePage****")
-    #     self.logger.info("***Verify Homepage title****")
-    #     self.driver = setup
-    #     self.driver.get(self.baseURL)
-    #     self.sb = HomePage(self.driver)
-    #     time.sleep(5)
-    #     actual_title = self.driver.title
-    #     if actual_title == "Measurement, Analytics, & Brand Safety | Moat by Oracle Data Cloud":
-    #         assert True
-    #         self.logger.info("*** Homepage title verified successfully****")
-    #         self.driver.close()
-    #     else:
-    #         self.driver.save_screenshot("./Screenshots/" + "test_homePageTittle.png")
-    #         self.logger.info("*** Homepage title verification  Failed****")
-    #         self.driver.close()
-    #         assert False
+    def test_homePageTittle(self, setup):
+        self.logger.info("***Test_001_HomePage****")
+        self.logger.info("***Verify Homepage title****")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.sb = HomePage(self.driver)
+        time.sleep(5)
+        actual_title = self.driver.title
+        if actual_title == "Measurement, Analytics, & Brand Safety | Moat by Oracle Data Cloud":
+            assert True
+            self.logger.info("*** Homepage title verified successfully****")
+            self.driver.close()
+        else:
+            self.driver.save_screenshot("./Screenshots/" + "test_homePageTittle.png")
+            self.logger.info("*** Homepage title verification  Failed****")
+            self.driver.close()
+            assert False
 
     def test_searchBrand(self, setup):
         self.logger.info("***Test_001_HomePage****")

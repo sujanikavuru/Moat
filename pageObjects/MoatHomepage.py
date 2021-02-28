@@ -1,6 +1,6 @@
 import time
 
-from selenium.common.exceptions import ElementNotVisibleException, ElementNotSelectableException
+from selenium.common.exceptions import ElementNotVisibleException, ElementNotSelectableException, TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
@@ -40,9 +40,13 @@ class HomePage:
         search_list = self.wait.until(
             expected_conditions.visibility_of_all_elements_located((By.XPATH, self.search_bar_drop_down_xpath)))
         for each_brand in search_list:
-            if each_brand.text == search_text:
-                each_brand.click()
-                break
+            try:
+                if each_brand.text == search_text:
+                    time.sleep(100)
+                    each_brand.click()
+                    break
+            except TimeoutException:
+                pass
 
     def creativecount(self):
         cc = self.wait.until(expected_conditions.visibility_of_element_located((By.XPATH, self.creatives_xpath)))
