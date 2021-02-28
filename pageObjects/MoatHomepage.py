@@ -42,7 +42,6 @@ class HomePage:
         for each_brand in search_list:
             try:
                 if each_brand.text == search_text:
-                    time.sleep(100)
                     each_brand.click()
                     break
             except TimeoutException:
